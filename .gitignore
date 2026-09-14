@@ -1,0 +1,27 @@
+# Eclipse
+.metadata/
+.classpath
+.project
+.settings/
+
+# IntelliJ
+.idea/
+*.iml
+
+# Maven
+target/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Environment / secrets
+.env
+application-local.yml
+application-local.properties
+
+# OS
+.DS_Store
+Thumbs.db
