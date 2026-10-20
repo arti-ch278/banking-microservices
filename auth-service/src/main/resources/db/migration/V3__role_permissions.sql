@@ -9,3 +9,14 @@ CREATE TABLE role_permissions(
 	CONSTRAINT fk_role_permission_role FOREIGN KEY(role_id) REFERENCES roles(id),
 	CONSTRAINT fk_role_permission_permission FOREIGN KEY(permission_id) REFERENCES permission(id),
 	);
+	
+INSERT INTO roles(name) VALUE
+('ROLE_ADMIN'),
+('ROLE_BANKER'),
+('ROLE_CUSTOMER');
+INSERT INTO permissions(name) VALUE
+('CREATE_ACCOUNT'),
+('VIEW_ACCOUNT'),
+('TRANSFER_MONEY'),
+('APPROVE_TRANSACTION');
+
