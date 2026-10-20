@@ -11,4 +11,6 @@ public class RegisterRequest {
 	private String password;
 	private String branchId;
 	private String employeeCode;
+	private String phoneNumber;
+	private String email;
 }
