@@ -18,8 +18,14 @@ public class UserService {
 	
 	public User register(RegisterRequest request) {
 		User user =User.builder().userName(request.getUsername()).branchId(request.getBranchId()).employeeCode(request.getEmployeeCode())
-				.password(passwordEncoder.encode(request.getPassword())).enabled(true).build();
+				.password(passwordEncoder.encode(request.getPassword())).enabled(true)
+				.email(request.getEmail()).phoneNumber(request.getPhoneNumber()).build();
 		return userRepository.save(user);
+		
+	}
+	public User findByUserName(String userName) {
+		User user=userRepository.findByUserName(userName).orElseThrow(()->new RuntimeException("user not found"+userName));
+		return user;
 		
 	}
 
