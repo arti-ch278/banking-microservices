@@ -1,5 +1,6 @@
 package com.artichourey.bank.authservice.domain;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -39,4 +40,9 @@ public class User {
 	@ManyToMany(fetch =FetchType.EAGER)
 	@JoinTable(name="user_roles",joinColumns=@JoinColumn(name="user_id"),inverseJoinColumns=@JoinColumn(name="role_id"))
 	private Set<Role> roles;
+	private String phoneNumber;
+	private String email;
+	private boolean accountNonLocked = true;
+	private int failedAttempts;
+	private LocalDateTime lockTime;
 }
