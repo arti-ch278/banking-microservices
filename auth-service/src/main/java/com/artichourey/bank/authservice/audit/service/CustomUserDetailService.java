@@ -1,7 +1,9 @@
 package com.artichourey.bank.authservice.audit.service;
 
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,7 +29,8 @@ public class CustomUserDetailService implements UserDetailsService {
 		
 		
 		return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), user.getRoles().stream()
-				.map(role-> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList()));
+				.flatMap(role-> Stream.concat(Stream.of(new SimpleGrantedAuthority(role.getName())), role.getPermissions().stream().
+						map(permission-> new SimpleGrantedAuthority(permission.getName())))).collect(Collectors.toList()));
 	}
 
 }
